@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Bill Splitter</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input, button { padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+    <h2>Restaurant Bill Splitter</h2>
+
+    <label for="totalBill">Enter total bill amount (in BHD):</label>
+    <input type="number" id="totalBill" placeholder="Total Bill (BHD)" required><br>
+
+    <label for="numberOfPeople">Enter number of people:</label>
+    <input type="number" id="numberOfPeople" placeholder="Number of People" required><br>
+
+    <button onclick="splitBill()">Split Bill</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function splitBill() {
+            var totalBill = parseFloat(document.getElementById('totalBill').value);
+            var numberOfPeople = parseInt(document.getElementById('numberOfPeople').value);
+
+            if (isNaN(totalBill) || isNaN(numberOfPeople) || numberOfPeople <= 0) {
+                document.getElementById('result').innerHTML = "Please enter valid numbers.";
+                return;
+            }
+
+            var amountPerPerson = totalBill / numberOfPeople;
+            amountPerPerson = amountPerPerson.toFixed(2); // Format to 2 decimal places
+
+            document.getElementById('result').innerHTML = "Each person needs to pay: BHD " + amountPerPerson;
+        }
+    </script>
+
+</body>
+</html>
