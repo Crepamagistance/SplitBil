@@ -1,0 +1,37 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class RestaurantBillSplitter {
+
+    public static void split() {
+        // Create scanner object for input
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompt the user for the total bill amount and number of people
+        System.out.print("Enter the total bill amount (in BHD): ");
+        double totalBill = scanner.nextDouble();
+        
+        System.out.print("Enter the number of people: ");
+        int numberOfPeople = scanner.nextInt();
+        
+        // Ensure there are people to split the bill with
+        if (numberOfPeople <= 0) {
+            System.out.println("The number of people must be greater than 0.");
+            return;
+        }
+        
+        // Calculate how much each person has to pay
+        double amountPerPerson = totalBill / numberOfPeople;
+        
+        // Create a DecimalFormat to format the output to 2 decimal places
+        DecimalFormat df = new DecimalFormat("#.00");
+        
+        // Display the amount each person has to pay
+        System.out.println("Each person needs to pay: BHD" + df.format(amountPerPerson));
+    }
+
+    public static void main(String[] args) {
+        // Call the split method
+        split();
+    }
+}
